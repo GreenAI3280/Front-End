@@ -1,0 +1,72 @@
+// tailwind.config.js
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+};
+
+// postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenAI Dashboard</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// src/main.tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// src/App.tsx
+import React from 'react';
+
+const App: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
+      <header className="text-3xl font-extrabold mb-8">GreenAI Dashboard</header>
+      <div className="grid gap-6 w-full max-w-5xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="bg-white rounded-2xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Module One</h2>
+          <p className="text-gray-600">Overview and details here.</p>
+        </div>
+        <div className="bg-white rounded-2xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Module Two</h2>
+          <p className="text-gray-600">Overview and details here.</p>
+        </div>
+        <div className="bg-white rounded-2xl shadow p-6">
+          <h2 className="text-xl font-semibold mb-2">Module Three</h2>
+          <p className="text-gray-600">Overview and details here.</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
